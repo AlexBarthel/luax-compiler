@@ -1,0 +1,21 @@
+from src.lexer import *
+from src.parser import *
+from src.ast import *
+from src.codegen import *
+
+print("Tokenizing bugs.luau...")
+lexer = Lexer(open("./examples/bugs.luau").read())
+tokens = lexer.tokenize()
+
+print("Validating semi-colons...")
+lexer.validate_semicolons()
+
+print("Parsing tokens...")
+parser = Parser(tokens)
+ast = parser.parse()
+
+print("Generating code...")
+program = Program(ast.statements)
+json_output = codegen(program)
+
+print(json_output)
