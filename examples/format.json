@@ -1,0 +1,1138 @@
+[
+    {
+        "content": [
+            {
+                "id": "0",
+                "text": [
+                    "When website loaded..."
+                ],
+                "actions": [
+                    {
+                        "id": "8",
+                        "text": [
+                            "Make",
+                            {
+                                "value": "D",
+                                "t": "object"
+                            },
+                            "invisible"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "8",
+                        "text": [
+                            "Make",
+                            {
+                                "value": "@",
+                                "t": "object"
+                            },
+                            "invisible"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "52",
+                        "text": [
+                            "Get local user ID →",
+                            {
+                                "value": "uid",
+                                "l": "variable",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "19",
+                        "text": [
+                            "If",
+                            {
+                                "value": "{uid}",
+                                "l": "any",
+                                "t": "string"
+                            },
+                            "is not equal to",
+                            {
+                                "value": "7225906702",
+                                "l": "any",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "9",
+                        "text": [
+                            "Make",
+                            {
+                                "value": "D",
+                                "t": "object"
+                            },
+                            "visible"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "3",
+                        "text": [
+                            "Wait",
+                            {
+                                "value": "1",
+                                "t": "number"
+                            },
+                            "seconds"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "63",
+                        "text": [
+                            "Run function",
+                            {
+                                "value": "verify_request",
+                                "l": "function",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "25",
+                        "text": [
+                            "end"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "18",
+                        "text": [
+                            "If",
+                            {
+                                "value": "{uid}",
+                                "l": "any",
+                                "t": "string"
+                            },
+                            "is equal to",
+                            {
+                                "value": "7225906702",
+                                "l": "any",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "9",
+                        "text": [
+                            "Make",
+                            {
+                                "value": "@",
+                                "t": "object"
+                            },
+                            "visible"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "54",
+                        "text": [
+                            "Create table",
+                            {
+                                "value": "queue",
+                                "l": "variable",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "25",
+                        "text": [
+                            "end"
+                        ],
+                        "t": "0"
+                    }
+                ]
+            },
+            {
+                "id": "6",
+                "text": [
+                    "Define function",
+                    {
+                        "value": "verify_request",
+                        "l": "function",
+                        "t": "string"
+                    }
+                ],
+                "actions": [
+                    {
+                        "id": "11",
+                        "text": [
+                            "Set variable",
+                            {
+                                "value": "req",
+                                "l": "variable",
+                                "t": "string"
+                            },
+                            "to",
+                            {
+                                "value": "",
+                                "l": "any",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "36",
+                        "text": [
+                            "Get cookie",
+                            {
+                                "value": "req",
+                                "l": "cookie",
+                                "t": "string"
+                            },
+                            "→",
+                            {
+                                "value": "req",
+                                "l": "variable",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "46",
+                        "text": [
+                            "If",
+                            {
+                                "value": "{req}",
+                                "l": "variable",
+                                "t": "string"
+                            },
+                            "NOR",
+                            {
+                                "value": "{null}",
+                                "l": "variable",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "4",
+                        "text": [
+                            "Redirect to",
+                            {
+                                "value": "bloxchain.rbx",
+                                "t": "string",
+                                "href": "true"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "25",
+                        "text": [
+                            "end"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "11",
+                        "text": [
+                            "Set variable",
+                            {
+                                "value": "progress_target",
+                                "l": "variable",
+                                "t": "string"
+                            },
+                            "to",
+                            {
+                                "value": "0.25",
+                                "l": "any",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "57",
+                        "text": [
+                            "Split string",
+                            {
+                                "value": "{req}",
+                                "t": "string"
+                            },
+                            {
+                                "value": ",",
+                                "l": "separator",
+                                "t": "string"
+                            },
+                            "→",
+                            {
+                                "value": "headers",
+                                "l": "table",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "56",
+                        "text": [
+                            "Get entry",
+                            {
+                                "value": "1",
+                                "l": "entry",
+                                "t": "string"
+                            },
+                            "of",
+                            {
+                                "value": "headers",
+                                "l": "table",
+                                "t": "string"
+                            },
+                            "→",
+                            {
+                                "value": "_id",
+                                "l": "variable",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "18",
+                        "text": [
+                            "If",
+                            {
+                                "value": "{_id}",
+                                "l": "any",
+                                "t": "string"
+                            },
+                            "is equal to",
+                            {
+                                "value": "0",
+                                "l": "any",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "56",
+                        "text": [
+                            "Get entry",
+                            {
+                                "value": "2",
+                                "l": "entry",
+                                "t": "string"
+                            },
+                            "of",
+                            {
+                                "value": "headers",
+                                "l": "table",
+                                "t": "string"
+                            },
+                            "→",
+                            {
+                                "value": "src",
+                                "l": "variable",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "56",
+                        "text": [
+                            "Get entry",
+                            {
+                                "value": "3",
+                                "l": "entry",
+                                "t": "string"
+                            },
+                            "of",
+                            {
+                                "value": "headers",
+                                "l": "table",
+                                "t": "string"
+                            },
+                            "→",
+                            {
+                                "value": "dst",
+                                "l": "variable",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "56",
+                        "text": [
+                            "Get entry",
+                            {
+                                "value": "4",
+                                "l": "entry",
+                                "t": "string"
+                            },
+                            "of",
+                            {
+                                "value": "headers",
+                                "l": "table",
+                                "t": "string"
+                            },
+                            "→",
+                            {
+                                "value": "amt",
+                                "l": "variable",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "3",
+                        "text": [
+                            "Wait",
+                            {
+                                "value": "1.375",
+                                "t": "number"
+                            },
+                            "seconds"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "63",
+                        "text": [
+                            "Run function",
+                            {
+                                "value": "ProcessTransaction",
+                                "l": "function",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "25",
+                        "text": [
+                            "end"
+                        ],
+                        "t": "0"
+                    }
+                ]
+            },
+            {
+                "id": "0",
+                "text": [
+                    "When website loaded..."
+                ],
+                "actions": [
+                    {
+                        "id": "11",
+                        "text": [
+                            "Set variable",
+                            {
+                                "value": "progress_value",
+                                "l": "variable",
+                                "t": "string"
+                            },
+                            "to",
+                            {
+                                "value": "0",
+                                "l": "any",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "11",
+                        "text": [
+                            "Set variable",
+                            {
+                                "value": "progress_target",
+                                "l": "variable",
+                                "t": "string"
+                            },
+                            "to",
+                            {
+                                "value": "0",
+                                "l": "any",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "23",
+                        "text": [
+                            "Repeat forever"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "20",
+                        "text": [
+                            "If",
+                            {
+                                "value": "{progress_target}",
+                                "l": "any",
+                                "t": "string"
+                            },
+                            "is greater than",
+                            {
+                                "value": "{progress_value}",
+                                "l": "any",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "12",
+                        "text": [
+                            "Increase",
+                            {
+                                "value": "progress_value",
+                                "l": "variable",
+                                "t": "string"
+                            },
+                            "by",
+                            {
+                                "value": "0.01",
+                                "t": "number"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "31",
+                        "text": [
+                            "Set prop",
+                            {
+                                "value": "Size",
+                                "l": "s",
+                                "t": "string"
+                            },
+                            "of",
+                            {
+                                "value": "R",
+                                "t": "object"
+                            },
+                            "to",
+                            {
+                                "value": "{progress_value},0,1,0",
+                                "t": "any"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "3",
+                        "text": [
+                            "Wait",
+                            {
+                                "value": "0.015",
+                                "t": "number"
+                            },
+                            "seconds"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "25",
+                        "text": [
+                            "end"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "11",
+                        "text": [
+                            "Set variable",
+                            {
+                                "value": "tmp",
+                                "l": "variable",
+                                "t": "string"
+                            },
+                            "to",
+                            {
+                                "value": "{progress_value}",
+                                "l": "any",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "42",
+                        "text": [
+                            "Sub",
+                            {
+                                "value": "tmp",
+                                "l": "variable",
+                                "t": "string"
+                            },
+                            {
+                                "value": "1",
+                                "l": "start",
+                                "t": "number"
+                            },
+                            "-",
+                            {
+                                "value": "4",
+                                "l": "end",
+                                "t": "number"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "18",
+                        "text": [
+                            "If",
+                            {
+                                "value": "{tmp}",
+                                "l": "any",
+                                "t": "string"
+                            },
+                            "is equal to",
+                            {
+                                "value": "{progress_target}",
+                                "l": "any",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "3",
+                        "text": [
+                            "Wait",
+                            {
+                                "value": "0.25",
+                                "t": "number"
+                            },
+                            "seconds"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "25",
+                        "text": [
+                            "end"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "25",
+                        "text": [
+                            "end"
+                        ],
+                        "t": "0"
+                    }
+                ]
+            },
+            {
+                "id": "4",
+                "warning": "This event changes the following variables:\n- {messageContent}\n- {messageSenderId}\n- {messageSenderName}",
+                "actions": [
+                    {
+                        "id": "18",
+                        "text": [
+                            "If",
+                            {
+                                "value": "{uid}",
+                                "l": "any",
+                                "t": "string"
+                            },
+                            "is equal to",
+                            {
+                                "value": "7225906702",
+                                "l": "any",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "19",
+                        "text": [
+                            "If",
+                            {
+                                "value": "{uid}",
+                                "l": "any",
+                                "t": "string"
+                            },
+                            "is not equal to",
+                            {
+                                "value": "{messageSenderId}",
+                                "l": "any",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "59",
+                        "text": [
+                            "Get length of",
+                            {
+                                "value": "queue",
+                                "l": "table",
+                                "t": "string"
+                            },
+                            "→",
+                            {
+                                "value": "l",
+                                "l": "variable",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "12",
+                        "text": [
+                            "Increase",
+                            {
+                                "value": "l",
+                                "l": "variable",
+                                "t": "string"
+                            },
+                            "by",
+                            {
+                                "value": "1",
+                                "t": "number"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "55",
+                        "text": [
+                            "Set entry",
+                            {
+                                "value": "l",
+                                "l": "entry",
+                                "t": "string"
+                            },
+                            "of",
+                            {
+                                "value": "queue",
+                                "l": "table",
+                                "t": "string"
+                            },
+                            "to",
+                            {
+                                "value": "{messageSenderId}",
+                                "l": "any",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "64",
+                        "text": [
+                            "Log table",
+                            {
+                                "value": "queue",
+                                "l": "table",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "25",
+                        "text": [
+                            "end"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "25",
+                        "text": [
+                            "end"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "19",
+                        "text": [
+                            "If",
+                            {
+                                "value": "{uid}",
+                                "l": "any",
+                                "t": "string"
+                            },
+                            "is not equal to",
+                            {
+                                "value": "7225906702",
+                                "l": "any",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "0",
+                        "text": [
+                            "Log",
+                            {
+                                "value": "res: {messageContent}",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "57",
+                        "text": [
+                            "Split string",
+                            {
+                                "value": "{messageContent}",
+                                "t": "string"
+                            },
+                            {
+                                "value": ",",
+                                "l": "separator",
+                                "t": "string"
+                            },
+                            "→",
+                            {
+                                "value": "res",
+                                "l": "table",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "56",
+                        "text": [
+                            "Get entry",
+                            {
+                                "value": "2",
+                                "l": "entry",
+                                "t": "string"
+                            },
+                            "of",
+                            {
+                                "value": "res",
+                                "l": "table",
+                                "t": "string"
+                            },
+                            "→",
+                            {
+                                "value": "dst",
+                                "l": "variable",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "10",
+                        "text": [
+                            "Set",
+                            {
+                                "value": "\u0005",
+                                "t": "object"
+                            },
+                            "text to",
+                            {
+                                "value": "Done.",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "11",
+                        "text": [
+                            "Set variable",
+                            {
+                                "value": "progress_target",
+                                "l": "variable",
+                                "t": "string"
+                            },
+                            "to",
+                            {
+                                "value": "1",
+                                "l": "any",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "3",
+                        "text": [
+                            "Wait",
+                            {
+                                "value": "1",
+                                "t": "number"
+                            },
+                            "seconds"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "4",
+                        "text": [
+                            "Redirect to",
+                            {
+                                "value": "bloxchain.rbx",
+                                "t": "string",
+                                "href": "true"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "18",
+                        "text": [
+                            "If",
+                            {
+                                "value": "{dst}",
+                                "l": "any",
+                                "t": "string"
+                            },
+                            "is equal to",
+                            {
+                                "value": "{uid}",
+                                "l": "any",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "25",
+                        "text": [
+                            "end"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "25",
+                        "text": [
+                            "end"
+                        ],
+                        "t": "0"
+                    }
+                ],
+                "text": [
+                    "When message received..."
+                ]
+            },
+            {
+                "id": "0",
+                "text": [
+                    "When website loaded..."
+                ],
+                "actions": [
+                    {
+                        "id": "3",
+                        "text": [
+                            "Wait",
+                            {
+                                "value": "1",
+                                "t": "number"
+                            },
+                            "seconds"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "34",
+                        "text": [
+                            "Set",
+                            {
+                                "value": "req",
+                                "l": "cookie",
+                                "t": "string"
+                            },
+                            "to",
+                            {
+                                "value": "0,MinecraftManiac251,blackIlsted,109",
+                                "t": "any"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "18",
+                        "text": [
+                            "If",
+                            {
+                                "value": "{uid}",
+                                "l": "any",
+                                "t": "string"
+                            },
+                            "is equal to",
+                            {
+                                "value": "7225906702",
+                                "l": "any",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "23",
+                        "text": [
+                            "Repeat forever"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "59",
+                        "text": [
+                            "Get length of",
+                            {
+                                "value": "queue",
+                                "l": "table",
+                                "t": "string"
+                            },
+                            "→",
+                            {
+                                "value": "L",
+                                "l": "variable",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "20",
+                        "text": [
+                            "If",
+                            {
+                                "value": "{L}",
+                                "l": "any",
+                                "t": "string"
+                            },
+                            "is greater than",
+                            {
+                                "value": "0",
+                                "l": "any",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "56",
+                        "text": [
+                            "Get entry",
+                            {
+                                "value": "1",
+                                "l": "entry",
+                                "t": "string"
+                            },
+                            "of",
+                            {
+                                "value": "queue",
+                                "l": "table",
+                                "t": "string"
+                            },
+                            "→",
+                            {
+                                "value": "r",
+                                "l": "variable",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "32",
+                        "text": [
+                            "Broadcast",
+                            {
+                                "value": "res,{r}",
+                                "l": "message",
+                                "t": "string"
+                            },
+                            "across page"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "65",
+                        "text": [
+                            "Delete entry",
+                            {
+                                "value": "1",
+                                "l": "entry",
+                                "t": "string"
+                            },
+                            "of",
+                            {
+                                "value": "queue",
+                                "l": "table",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "0",
+                        "text": [
+                            "Log",
+                            {
+                                "value": "sent res to {r}",
+                                "t": "string"
+                            }
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "3",
+                        "text": [
+                            "Wait",
+                            {
+                                "value": "1.5",
+                                "t": "number"
+                            },
+                            "seconds"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "25",
+                        "text": [
+                            "end"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "25",
+                        "text": [
+                            "end"
+                        ],
+                        "t": "0"
+                    },
+                    {
+                        "id": "25",
+                        "text": [
+                            "end"
+                        ],
+                        "t": "0"
+                    }
+                ]
+            }
+        ],
+        "alias": "APIService",
+        "class": "script",
+        "globalid": "\b"
+    }
+]
