@@ -47,9 +47,11 @@ class TokenType(Enum):
     FUNCTIONS_RUN = auto()
     VAR = auto()
 
+    DEF = auto()
     IF = auto()
+    THEN = auto()
+    ELSE = auto()
     REPEAT_FOREVER = auto()
-    END = auto()
 
     # Operators and Punctuation
     EQUALS = auto()
@@ -57,27 +59,24 @@ class TokenType(Enum):
     LESS_THAN = auto()
     NOT_EQUAL = auto()
     ASSIGN = auto()
-    COMMA = auto()
-    COLON = auto()
-    SEMICOLON = auto()
     LPAREN = auto()
     RPAREN = auto()
     LSQUARE = auto()
     RSQUARE = auto()
-    LBRACE = auto()
-    RBRACE = auto()
+    PLUS = auto()
+    MINUS = auto()
+    MULTIPLY = auto()
+    DIVIDE = auto()
+    MODULO = auto()
+    CONCAT = auto()
 
     # Other
     IDENTIFIER = auto()
-    OBJECT_IDENTIFIER = auto()
     NUMBER = auto()
     STRING = auto()
     EOF = auto()
-    FUNCTION = auto()
-    FUNCTION_CALL = auto()
     COMMENT = auto()
     EVENT = auto()
-    LENGTH_OF = auto()
 
 
 class Token:
@@ -96,72 +95,72 @@ class Lexer:
 
     def tokenize(self):
         patterns = [
-            (r'Console:Log', TokenType.CONSOLE_LOG),
-            (r'Console:Warn', TokenType.CONSOLE_WARN),
-            (r'Console:Error', TokenType.CONSOLE_ERROR),
-            (r'Logic:Wait', TokenType.LOGIC_WAIT),
-            (r'Navigation:Redirect', TokenType.NAVIGATION_REDIRECT),
-            (r'Audio:Play', TokenType.AUDIO_PLAY),
-            (r'Audio:SetVolume', TokenType.AUDIO_SET_VOLUME),
-            (r'Audio:Stop', TokenType.AUDIO_STOP),
-            (r'Audio:Pause', TokenType.AUDIO_PAUSE),
-            (r'Audio:Resume', TokenType.AUDIO_RESUME),
-            (r'Looks:Show', TokenType.LOOKS_SHOW),
-            (r'Looks:Hide', TokenType.LOOKS_HIDE),
-            (r'Looks:SetText', TokenType.LOOKS_SET_TEXT),
-            (r'Looks:SetProperty', TokenType.LOOKS_SET_PROPERTY),
-            (r'Looks:GetProperty', TokenType.LOOKS_GET_PROPERTY),
-            (r'Looks:GetText', TokenType.LOOKS_GET_TEXT),
-            (r'Looks:Duplicate', TokenType.LOOKS_DUPLICATE),
-            (r'Looks:Delete', TokenType.LOOKS_DELETE),
-            (r'Looks:SetParent', TokenType.LOOKS_SET_PARENT),
-            (r'Network:Broadcast', TokenType.NETWORK_BROADCAST),
-            (r'Network:GlobalBroadcast', TokenType.NETWORK_GLOBAL_BROADCAST),
-            (r'Network:GetUsername', TokenType.NETWORK_GET_USERNAME),
-            (r'Network:GetDisplayName', TokenType.NETWORK_GET_DISPLAYNAME),
-            (r'Network:GetUserId', TokenType.NETWORK_GET_USERID),
-            (r'Cookies:SetCookie', TokenType.COOKIES_SET_COOKIE),
-            (r'Cookies:IncreaseCookie', TokenType.COOKIES_INCREASE_COOKIE),
-            (r'Cookies:DeleteCookie', TokenType.COOKIES_DELETE_COOKIE),
-            (r'Cookies:GetCookie', TokenType.COOKIES_GET_COOKIE),
-            (r'Math:Round', TokenType.MATH_ROUND),
-            (r'Math:Floor', TokenType.MATH_FLOOR),
-            (r'Math:Random', TokenType.MATH_RANDOM),
-            (r'Strings:Substring', TokenType.STRINGS_SUBSTRING),
-            (r'Strings:Replace', TokenType.STRINGS_REPLACE),
-            (r'Strings:GetLength', TokenType.STRINGS_GET_LENGTH),
-            (r'Strings:Split', TokenType.STRINGS_SPLIT),
-            (r'Tables:New', TokenType.TABLES_NEW),
-            (r'Tables:SetEntry', TokenType.TABLES_SET_ENTRY),
-            (r'Tables:GetEntry', TokenType.TABLES_GET_ENTRY),
-            (r'Tables:DeleteEntry', TokenType.TABLES_DELETE_ENTRY),
-            (r'Tables:GetLength', TokenType.TABLES_GET_LENGTH),
-            (r'Functions:Run', TokenType.FUNCTIONS_RUN),
-            (r'if', TokenType.IF),
-            (r'repeat_forever', TokenType.REPEAT_FOREVER),
-            (r'end', TokenType.END),
-            (r'<#\d+>', TokenType.OBJECT_IDENTIFIER),
-            (r'@event ([a-zA-Z]*)', TokenType.EVENT),
-            (r'@function ([a-zA-Z]*)', TokenType.FUNCTION),
-            (r'#', TokenType.LENGTH_OF),
+            (r'Console:Log\b', TokenType.CONSOLE_LOG),
+            (r'Console:Warn\b', TokenType.CONSOLE_WARN),
+            (r'Console:Error\b', TokenType.CONSOLE_ERROR),
+            (r'Logic:Wait\b', TokenType.LOGIC_WAIT),
+            (r'Navigation:Redirect\b', TokenType.NAVIGATION_REDIRECT),
+            (r'Audio:Play\b', TokenType.AUDIO_PLAY),
+            (r'Audio:SetVolume\b', TokenType.AUDIO_SET_VOLUME),
+            (r'Audio:Stop\b', TokenType.AUDIO_STOP),
+            (r'Audio:Pause\b', TokenType.AUDIO_PAUSE),
+            (r'Audio:Resume\b', TokenType.AUDIO_RESUME),
+            (r'Looks:Show\b', TokenType.LOOKS_SHOW),
+            (r'Looks:Hide\b', TokenType.LOOKS_HIDE),
+            (r'Looks:SetText\b', TokenType.LOOKS_SET_TEXT),
+            (r'Looks:SetProperty\b', TokenType.LOOKS_SET_PROPERTY),
+            (r'Looks:GetProperty\b', TokenType.LOOKS_GET_PROPERTY),
+            (r'Looks:GetText\b', TokenType.LOOKS_GET_TEXT),
+            (r'Looks:Duplicate\b', TokenType.LOOKS_DUPLICATE),
+            (r'Looks:Delete\b', TokenType.LOOKS_DELETE),
+            (r'Looks:SetParent\b', TokenType.LOOKS_SET_PARENT),
+            (r'Network:Broadcast\b', TokenType.NETWORK_BROADCAST),
+            (r'Network:GlobalBroadcast\b', TokenType.NETWORK_GLOBAL_BROADCAST),
+            (r'Network:GetUsername\b', TokenType.NETWORK_GET_USERNAME),
+            (r'Network:GetDisplayName\b', TokenType.NETWORK_GET_DISPLAYNAME),
+            (r'Network:GetUserId\b', TokenType.NETWORK_GET_USERID),
+            (r'Cookies:SetCookie\b', TokenType.COOKIES_SET_COOKIE),
+            (r'Cookies:IncreaseCookie\b', TokenType.COOKIES_INCREASE_COOKIE),
+            (r'Cookies:DeleteCookie\b', TokenType.COOKIES_DELETE_COOKIE),
+            (r'Cookies:GetCookie\b', TokenType.COOKIES_GET_COOKIE),
+            (r'Math:Round\b', TokenType.MATH_ROUND),
+            (r'Math:Floor\b', TokenType.MATH_FLOOR),
+            (r'Math:Random\b', TokenType.MATH_RANDOM),
+            (r'Strings:Substring\b', TokenType.STRINGS_SUBSTRING),
+            (r'Strings:Replace\b', TokenType.STRINGS_REPLACE),
+            (r'Strings:GetLength\b', TokenType.STRINGS_GET_LENGTH),
+            (r'Strings:Split\b', TokenType.STRINGS_SPLIT),
+            (r'Tables:New\b', TokenType.TABLES_NEW),
+            (r'Tables:SetEntry\b', TokenType.TABLES_SET_ENTRY),
+            (r'Tables:GetEntry\b', TokenType.TABLES_GET_ENTRY),
+            (r'Tables:DeleteEntry\b', TokenType.TABLES_DELETE_ENTRY),
+            (r'Tables:GetLength\b', TokenType.TABLES_GET_LENGTH),
+            (r'Functions:Run\b', TokenType.FUNCTIONS_RUN),
+            (r'\bdef\b', TokenType.DEF),
+            (r'\bif\b', TokenType.IF),
+            (r'\bthen\b', TokenType.THEN),
+            (r'\belse\b', TokenType.ELSE),
+            (r'\brepeat_forever\b', TokenType.REPEAT_FOREVER),
+            (r'@event ([a-zA-Z_0-9]*)', TokenType.EVENT),
             (r'==', TokenType.EQUALS),
             (r'>', TokenType.GREATER_THAN),
             (r'<', TokenType.LESS_THAN),
             (r'!=', TokenType.NOT_EQUAL),
             (r'=', TokenType.ASSIGN),
-            (r',', TokenType.COMMA),
-            (r':', TokenType.COLON),
-            (r';', TokenType.SEMICOLON),
+            (r'\+', TokenType.PLUS),
+            (r'-', TokenType.MINUS),
+            (r'\*', TokenType.MULTIPLY),
+            (r'/', TokenType.DIVIDE),
+            (r'%', TokenType.MODULO),
+            (r'::', TokenType.CONCAT),
             (r'\(', TokenType.LPAREN),
             (r'\)', TokenType.RPAREN),
             (r'\[', TokenType.LSQUARE),
             (r'\]', TokenType.RSQUARE),
-            (r'\{', TokenType.LBRACE),
-            (r'\}', TokenType.RBRACE),
             (r'\d+', TokenType.NUMBER),
             (r'\".*?\"', TokenType.STRING),
-            (r'[a-zA-Z_][a-zA-Z0-9_]*', TokenType.IDENTIFIER),
-            (r'--.*', None), # Ignore comments
+            (r'[a-zA-Z_][a-zA-Z0-9_\-\?]*', TokenType.IDENTIFIER),
+            (r'#.*', None), # Ignore comments
             (r'\s+', None),  # Ignore whitespace
         ]
 
@@ -183,72 +182,3 @@ class Lexer:
 
         self.tokens.append(Token(TokenType.EOF, None))
         return self.tokens
-
-    def validate_semicolons(self):
-        """
-        Validates that all appropriate statements are followed by a semicolon.
-        Raises a SyntaxError if any rule is violated.
-        """
-        semicolon_required_tokens = {
-            TokenType.CONSOLE_LOG,
-            TokenType.CONSOLE_WARN,
-            TokenType.CONSOLE_ERROR,
-            TokenType.LOGIC_WAIT,
-            TokenType.NAVIGATION_REDIRECT,
-            TokenType.AUDIO_PLAY,
-            TokenType.AUDIO_SET_VOLUME,
-            TokenType.AUDIO_STOP,
-            TokenType.AUDIO_PAUSE,
-            TokenType.AUDIO_RESUME,
-            TokenType.LOOKS_SHOW,
-            TokenType.LOOKS_HIDE,
-            TokenType.LOOKS_SET_TEXT,
-            TokenType.LOOKS_SET_PROPERTY,
-            TokenType.LOOKS_GET_PROPERTY,
-            TokenType.LOOKS_GET_TEXT,
-            TokenType.LOOKS_DUPLICATE,
-            TokenType.LOOKS_DELETE,
-            TokenType.LOOKS_SET_PARENT,
-            TokenType.NETWORK_BROADCAST,
-            TokenType.NETWORK_GLOBAL_BROADCAST,
-            TokenType.NETWORK_GET_USERNAME,
-            TokenType.NETWORK_GET_DISPLAYNAME,
-            TokenType.NETWORK_GET_USERID,
-            TokenType.COOKIES_SET_COOKIE,
-            TokenType.COOKIES_INCREASE_COOKIE,
-            TokenType.COOKIES_DELETE_COOKIE,
-            TokenType.COOKIES_GET_COOKIE,
-            TokenType.MATH_ROUND,
-            TokenType.MATH_FLOOR,
-            TokenType.MATH_RANDOM,
-            TokenType.STRINGS_SUBSTRING,
-            TokenType.STRINGS_REPLACE,
-            TokenType.STRINGS_GET_LENGTH,
-            TokenType.STRINGS_SPLIT,
-            TokenType.TABLES_NEW,
-            TokenType.TABLES_SET_ENTRY,
-            TokenType.TABLES_GET_ENTRY,
-            TokenType.TABLES_DELETE_ENTRY,
-            TokenType.TABLES_GET_LENGTH,
-            TokenType.FUNCTIONS_RUN,
-        }
-
-        i = 0
-        while i < len(self.tokens):
-            token = self.tokens[i]
-            if token.type in semicolon_required_tokens:
-                # Check the next token to ensure it's a semicolon
-                if i + 1 < len(self.tokens) and self.tokens[i + 1].type != TokenType.SEMICOLON:
-                    raise SyntaxError(f"Expected ';' after '{token.value}'")
-            elif token.type in {TokenType.EVENT, TokenType.FUNCTION}:
-                # Skip the block for these control structures
-                brace_count = 0
-                while i < len(self.tokens):
-                    if self.tokens[i].type == TokenType.LBRACE:
-                        brace_count += 1
-                    elif self.tokens[i].type == TokenType.RBRACE:
-                        brace_count -= 1
-                        if brace_count == 0:
-                            break
-                    i += 1
-            i += 1

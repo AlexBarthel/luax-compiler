@@ -7,8 +7,6 @@ print("Tokenizing bugs.luau...")
 lexer = Lexer(open("./examples/bugs.luax").read())
 tokens = lexer.tokenize()
 
-print("Validating semi-colons...")
-lexer.validate_semicolons()
 
 print("Parsing tokens...")
 parser = Parser(tokens)

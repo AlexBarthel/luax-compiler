@@ -2,16 +2,9 @@ from src.lexer import *
 from src.parser import *
 
 source_code = '''
-@event WhenWebsiteLoaded() {
-    if (x == y) {
-        Console:Log("x equals y");
-    }
-    repeat_forever() {
-        Logic:Wait(1);
-    }
-    Looks:Hide("D");
-    Network:GetUserId("uid");
-}
+@event WhenWebsiteLoaded
+    x = 5
+    Console:Log "Hello world!"
 '''
 
 lexer = Lexer(source_code)

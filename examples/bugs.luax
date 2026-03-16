@@ -1,4 +1,3 @@
-@event WhenWebsiteLoaded() {
-    x = 5;
-    Console:Log("Hello world!");
-}
+@event WhenWebsiteLoaded
+    x = 5
+    Console:Log "Hello world!"

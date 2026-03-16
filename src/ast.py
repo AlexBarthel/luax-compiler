@@ -40,6 +40,26 @@ class Empty():
     def __init__(self):
         pass
 
+class IfThenElse(Statement):
+    def __init__(self, condition_left, operator, condition_right, then_body, else_body=None):
+        self.condition_left = condition_left
+        self.operator = operator
+        self.condition_right = condition_right
+        self.then_body = then_body
+        self.else_body = else_body if else_body is not None else []
+
+class BinaryOperation(Expression):
+    def __init__(self, left, operator, right):
+        self.left = left
+        self.operator = operator
+        self.right = right
+
+class DefStatement(Statement):
+    def __init__(self, name, parameters, body):
+        self.name = name
+        self.parameters = parameters
+        self.body = body
+
 class IfStatement(Statement):
     def __init__(self, condition_left, operator, condition_right, body):
         self.condition_left = condition_left

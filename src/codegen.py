@@ -50,6 +50,25 @@ def translate_statements(statements):
             ])
             actions.append(action)
             action_id += 1
+        elif isinstance(statement, BinaryOperation):
+            operator_map = {
+                "TokenType.PLUS": "+",
+                "TokenType.MINUS": "-",
+                "TokenType.MULTIPLY": "*",
+                "TokenType.DIVIDE": "/",
+                "TokenType.MODULO": "%",
+                "TokenType.CONCAT": "::"
+            }
+            op_str = operator_map.get(str(statement.operator), "+")
+            action = generate_action(action_id, [
+                "BinaryOperation",
+                {"value": str(statement.left), "l": "any", "t": "string"},
+                op_str,
+                {"value": str(statement.right), "l": "any", "t": "string"}
+            ])
+            actions.append(action)
+            action_id += 1
+
         elif isinstance(statement, FunctionCall):
             action = generate_action(action_id, [
                 "Run function",
@@ -57,6 +76,23 @@ def translate_statements(statements):
             ])
             actions.append(action)
             action_id += 1
+        elif isinstance(statement, DefStatement):
+            action = generate_action(action_id, [
+                "Define function",
+                {"value": statement.name, "l": "function", "t": "string"}
+            ])
+            actions.append(action)
+            action_id += 1
+
+            body_actions = translate_statements(statement.body)
+            for ba in body_actions:
+                ba['id'] = str(action_id)
+                actions.append(ba)
+                action_id += 1
+
+            actions.append(generate_action(action_id, ["end"]))
+            action_id += 1
+
         elif isinstance(statement, IfStatement):
             operator_map = {
                 "TokenType.EQUALS": "is equal to",
@@ -85,6 +121,54 @@ def translate_statements(statements):
             # Add end block
             actions.append(generate_action(action_id, ["end"]))
             action_id += 1
+
+        elif isinstance(statement, IfThenElse):
+            operator_map = {
+                "TokenType.EQUALS": "is equal to",
+                "TokenType.NOT_EQUAL": "is not equal to",
+                "TokenType.GREATER_THAN": "is greater than",
+                "TokenType.LESS_THAN": "is less than"
+            }
+            op_str = operator_map.get(str(statement.operator), "is equal to")
+
+            action = generate_action(action_id, [
+                "If",
+                {"value": str(statement.condition_left), "l": "any", "t": "string"},
+                op_str,
+                {"value": str(statement.condition_right), "l": "any", "t": "string"}
+            ])
+            actions.append(action)
+            action_id += 1
+
+            # Append then body actions
+            then_actions = translate_statements(statement.then_body)
+            for ba in then_actions:
+                ba['id'] = str(action_id)
+                actions.append(ba)
+                action_id += 1
+
+            # Add end block
+            actions.append(generate_action(action_id, ["end"]))
+            action_id += 1
+
+            if len(statement.else_body) > 0:
+                # Add else logic... the output json structure usually doesn't have an "else" block
+                # However we can try to represent it for now
+                action = generate_action(action_id, [
+                    "Else"
+                ])
+                actions.append(action)
+                action_id += 1
+
+                # Append else body actions
+                else_actions = translate_statements(statement.else_body)
+                for ba in else_actions:
+                    ba['id'] = str(action_id)
+                    actions.append(ba)
+                    action_id += 1
+
+                actions.append(generate_action(action_id, ["end"]))
+                action_id += 1
 
         elif isinstance(statement, RepeatForever):
             action = generate_action(action_id, [
