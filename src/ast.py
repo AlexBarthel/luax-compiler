@@ -54,6 +54,20 @@ class BinaryOperation(Expression):
         self.operator = operator
         self.right = right
 
+    def __str__(self):
+        from src.lexer import TokenType
+        operator_map = {
+            TokenType.PLUS: "+",
+            TokenType.MINUS: "-",
+            TokenType.MULTIPLY: "*",
+            TokenType.DIVIDE: "/",
+            TokenType.MODULO: "%",
+            TokenType.CONCAT: "::"
+        }
+        op_str = operator_map.get(self.operator, "+")
+        # Ensure we stringify nested ones too
+        return f"{self.left} {op_str} {self.right}"
+
 class DefStatement(Statement):
     def __init__(self, name, parameters, body):
         self.name = name
