@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "catweb-compiler"
+version = "0.1.0"
+description = "A compiler for a custom text-based language to CatWeb JSON."
+authors = ["Alex Barthel"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
